@@ -1,0 +1,86 @@
+import java.util.*;
+class Cab{
+	int baseCharges;
+	int addtionalCharges;
+	
+}
+
+class Mini extends Cab{
+	int estimatedCost(int distance)
+	{
+		int total = 0;
+		if(distance <= 3)
+		{
+			total = 50;
+		}
+		else if(distance > 3 && distance <= 15)
+		{
+			total = 50 + ((distance - 3)*10);
+		}
+		else if(distance > 15 && distance <= 75)
+		{
+			total = 50 + ((15-3)*10) + ((distance - 18)*8);
+		}
+		else if(distance > 75)
+		{
+			total = distance*8;
+		}
+		return total;
+	}
+}	
+
+class Sedan extends Cab{
+	int estimatedCost(int distance)
+	{
+		int total = 0;
+		if(distance <= 5)
+		{
+			total = 80;
+		}
+		else if(distance > 5 && distance <= 15)
+		{
+			total = 80 + ((distance - 5)*12);
+		}
+		else if(distance > 15 && distance <= 100)
+		{
+			total = 80 + ((15-5)*12) + ((distance - 20)*10);
+		}
+		else if(distance > 100)
+		{
+			total = distance*10;
+		}
+		return total;
+	}
+}
+
+class SUV extends Cab{
+	int estimatedCost(int distance)
+	{
+		int total = 0;
+		if(distance <= 5)
+		{
+			total = 100;
+		}
+		else if(distance > 5 && distance <= 15)
+		{
+			total = 100 + ((distance - 5)*15);
+		}
+		else if(distance > 15)
+		{
+			total = 100 + (15*15) + ((distance - 20)*12);
+		}
+		return total;
+	}
+}
+public class Taxi {
+
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int distance = sc.nextInt();
+		Mini mini = new Mini();
+		Sedan sedan = new Sedan();
+		SUV suv = new SUV();
+		System.out.println("Mini - Rs. "+mini.estimatedCost(distance)+", Sedan - Rs. "+sedan.estimatedCost(distance)+", SUV - Rs. "+suv.estimatedCost(distance));
+	}
+}
